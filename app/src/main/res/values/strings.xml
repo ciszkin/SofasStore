@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SofasStore</string>
+    <string name="name_price">Name: - , Price: -</string>
+    <string name="sort_by">Sort by:</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="go_to_cart">Go to cart</string>
 </resources>
