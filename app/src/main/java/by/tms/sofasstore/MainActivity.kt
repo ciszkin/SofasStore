@@ -1,14 +1,12 @@
 package by.tms.sofasstore
 
-import android.content.DialogInterface
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -34,26 +32,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
         catalog.onItemClickListener = this
 
         goToCartButton.setOnClickListener(this)
-        //addToCartButton.setOnClickListener(this)
     }
 
     override fun onClick(p0: View?) {
         when (p0?.id) {
             goToCartButton.id -> {
+                startActivity(Intent(this, CartActivity::class.java))
             }
-//            addToCartButton.id -> {
-//                val selectedSofa = CatalogCollection.instance.currentSofa
-//                if (selectedSofa != null) {
-//                    Cart.instance.addSofa(selectedSofa)
-//                    Toast.makeText(
-//                        this,
-//                        "Sofa ${selectedSofa.name} added to cart!",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                } else {
-//                    Toast.makeText(this, "Nothing to add!", Toast.LENGTH_SHORT).show()
-//                }
-//            }
         }
     }
 
@@ -109,14 +94,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
 
     override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
         MaterialAlertDialogBuilder(this)
-            .setTitle("Add sofa to cart?")
+            .setTitle(getString(R.string.add_sofa_to_cart))
             .setMessage(
                 "Name: ${(p0?.getItemAtPosition(p2) as Sofa).name}, price: \$${(p0.getItemAtPosition(
                     p2
                 ) as Sofa).price}"
             )
             .setPositiveButton(
-                "Ok"
+                getString(R.string.add)
             ) { dialogInterface, i ->
 
                 Cart.instance.addSofa(p0.getItemAtPosition(p2) as Sofa)
@@ -127,9 +112,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
                 ).show()
 
             }
-            .setNegativeButton("Cancel", null)
+            .setNegativeButton(getString(R.string.cancel), null)
             .setIcon((p0.getItemAtPosition(p2) as Sofa).image)
             .show()
-//        CatalogCollection.instance.currentSofa = p0?.getItemAtPosition(p2) as Sofa
     }
 }
