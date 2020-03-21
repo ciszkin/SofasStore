@@ -4,4 +4,12 @@
     <string name="sort_by">Sort by:</string>
     <string name="add_to_cart">Add to cart</string>
     <string name="go_to_cart">Go to cart</string>
+    <string name="your_shopping_cart_contains">Your shopping cart contains:</string>
+    <string name="total">Total:</string>
+    <string name="_0">0.00</string>
+    <string name="add">Add</string>
+    <string name="cancel">Cancel</string>
+    <string name="add_sofa_to_cart">Add sofa to cart?</string>
+    <string name="remove">Remove</string>
+    <string name="remove_sofa_from_cart">Remove sofa from cart?</string>
 </resources>

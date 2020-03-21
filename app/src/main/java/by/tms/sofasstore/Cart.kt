@@ -13,13 +13,21 @@ class Cart {
         }
     }
 
-    fun selectSofa(sofa: Sofa) : Boolean {
+    fun removeSofa(sofa: Sofa): Boolean {
         return if(list.contains(sofa)) {
-            currentSofa = sofa
+            list.remove(sofa)
             true
         } else {
             false
         }
+    }
+
+    fun getList() : List<Sofa> {
+        return list
+    }
+
+    fun getTotal() : Double {
+        return if(list.isNotEmpty()) list.sumByDouble { it.price } else 0.0
     }
 
     companion object {
