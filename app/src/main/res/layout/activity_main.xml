@@ -40,16 +40,17 @@
 
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <GridView
+
+
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/catalog"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="16dp"
-        android:numColumns="2"
-        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/goToCartButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:gravity="center"/>
 
 
     <Button

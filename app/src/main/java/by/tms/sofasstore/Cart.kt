@@ -2,13 +2,14 @@ package by.tms.sofasstore
 
 class Cart {
     private val list = ArrayList<Sofa>()
-    var currentSofa : Sofa? = null
+    private var total = 0.0
 
     fun addSofa(sofa: Sofa) : Boolean{
         return if(list.contains(sofa)) {
             false
         } else {
             list.add(sofa)
+            total = list.sumByDouble { it.price }
             true
         }
     }
@@ -16,18 +17,19 @@ class Cart {
     fun removeSofa(sofa: Sofa): Boolean {
         return if(list.contains(sofa)) {
             list.remove(sofa)
+            total = list.sumByDouble { it.price }
             true
         } else {
             false
         }
     }
 
-    fun getList() : List<Sofa> {
+    fun getList() : MutableList<Sofa> {
         return list
     }
 
     fun getTotal() : Double {
-        return if(list.isNotEmpty()) list.sumByDouble { it.price } else 0.0
+        return total
     }
 
     companion object {
