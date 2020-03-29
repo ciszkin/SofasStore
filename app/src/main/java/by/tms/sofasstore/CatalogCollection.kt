@@ -3,7 +3,7 @@ package by.tms.sofasstore
 class CatalogCollection {
 //    val sofas = ArrayList<Sofa>()
     var currentSofa : Sofa? = null
-    val sofas = listOf<Sofa>(
+    var sofas = mutableListOf(
     Sofa("Apollo", 1500.0, R.drawable.apollo),
     Sofa("Charm", 700.0, R.drawable.charm),
     Sofa("Club", 550.0, R.drawable.club),
