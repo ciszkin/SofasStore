@@ -12,4 +12,6 @@
     <string name="add_sofa_to_cart">Add sofa to cart?</string>
     <string name="remove">Remove</string>
     <string name="remove_sofa_from_cart">Remove sofa from cart?</string>
+    <string name="cart_image">Cart image</string>
+    <string name="logo_image">Logo image</string>
 </resources>
