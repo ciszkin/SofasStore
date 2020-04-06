@@ -1,9 +1,12 @@
-package by.tms.sofasstore
+package by.tms.sofasstore.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import jp.wasabeef.recyclerview.animators.FadeInAnimator
+import by.tms.sofasstore.Cart
+import by.tms.sofasstore.utilites.OnItemAction
+import by.tms.sofasstore.R
+import jp.wasabeef.recyclerview.animators.ScaleInAnimator
 import kotlinx.android.synthetic.main.cart_layout.*
 
 class CartActivity : AppCompatActivity() {
@@ -12,12 +15,18 @@ class CartActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.cart_layout)
 
-        val cartAdapter = SofaAdapter(Cart.instance.getList(), R.layout.sofa_item_list, OnItemActivity.REMOVE_ITEM)
-        cartAdapter.setTextView(totalValueTextView)
+        val cartAdapter = SofaAdapter(
+            Cart.instance.getList(),
+            R.layout.sofa_item_list,
+            OnItemAction.REMOVE_ITEM
+        )
+        cartAdapter.total = totalValueTextView
 
         cartList.adapter = cartAdapter
         cartList.layoutManager = LinearLayoutManager(this)
-        cartList.itemAnimator = FadeInAnimator()
+        cartList.itemAnimator = ScaleInAnimator().apply {
+            removeDuration = 500
+        }
 
         totalValueTextView.text = Cart.instance.getTotal().toString()
     }

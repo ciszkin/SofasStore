@@ -1,4 +1,4 @@
-package by.tms.sofasstore
+package by.tms.sofasstore.utilites
 
 enum class SortBy(private val text: String) {
     HIGH_TO_LOW("Expensive first"),

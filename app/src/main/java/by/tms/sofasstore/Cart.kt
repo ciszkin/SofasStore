@@ -1,5 +1,7 @@
 package by.tms.sofasstore
 
+import by.tms.sofasstore.database.Sofa
+
 class Cart {
     private val list = ArrayList<Sofa>()
     private var total = 0.0

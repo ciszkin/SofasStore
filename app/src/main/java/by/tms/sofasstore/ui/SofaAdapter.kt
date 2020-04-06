@@ -1,4 +1,4 @@
-package by.tms.sofasstore
+package by.tms.sofasstore.ui
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,11 +6,15 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import by.tms.sofasstore.Cart
+import by.tms.sofasstore.R
+import by.tms.sofasstore.database.Sofa
+import by.tms.sofasstore.utilites.OnItemAction
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.sofa_item_grid.view.*
 
-class SofaAdapter(private val list: MutableList<Sofa>, private val layout: Int, private val activity: OnItemActivity) :
+class SofaAdapter(private val list: MutableList<Sofa>, private val layout: Int, private val activity: OnItemAction) :
     RecyclerView.Adapter<SofaAdapter.SofaViewHolder>() {
 
     class SofaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
@@ -43,7 +47,10 @@ class SofaAdapter(private val list: MutableList<Sofa>, private val layout: Int, 
                         activity.buttonText
                     ) { _, _ ->
                         activity.act(list, position)
-                        notifyDataSetChanged()
+                        if(activity == OnItemAction.REMOVE_ITEM) {
+                            notifyItemRemoved(position)
+                            notifyItemRangeChanged(position, itemCount)
+                        }
                         Toast.makeText(
                             this.context,
                             activity.toastText,
@@ -54,13 +61,8 @@ class SofaAdapter(private val list: MutableList<Sofa>, private val layout: Int, 
 
                     }
                     .setNegativeButton(this.context.getString(R.string.cancel), null)
-                    .setIcon(list[position].image)
                     .show()
             }
         }
-    }
-
-    fun setTextView(view: TextView) {
-        total = view
     }
 }
